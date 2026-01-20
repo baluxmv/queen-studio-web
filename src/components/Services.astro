@@ -1,0 +1,72 @@
+---
+const services = [
+  {
+    icon: `<path d="M12 2L15 8H9L12 2Z"/><path d="M12 8V22"/><circle cx="12" cy="15" r="3"/>`,
+    title: 'Manicure Premium',
+    description: 'Tratamiento completo con limpieza profunda, hidratacion y esmaltado de larga duracion.',
+    price: 'Desde $15.000',
+  },
+  {
+    icon: `<path d="M4 4L8 20L12 8L16 20L20 4"/>`,
+    title: 'Nail Art Exclusivo',
+    description: 'Disenos personalizados con tecnicas avanzadas: acrilico esculpido, encapsulado y 3D.',
+    price: 'Desde $25.000',
+  },
+  {
+    icon: `<path d="M12 3C16.5 3 20 6.5 20 11V13C20 17.5 16.5 21 12 21C7.5 21 4 17.5 4 13V11C4 6.5 7.5 3 12 3Z"/><path d="M12 7V12"/><circle cx="12" cy="16" r="1" fill="currentColor"/>`,
+    title: 'Semipermanente',
+    description: 'Acabado perfecto con duracion de hasta 3 semanas. Brillo intenso y colores vibrantes.',
+    price: 'Desde $18.000',
+  },
+  {
+    icon: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3V21"/><path d="M15 3V21"/><path d="M3 9H21"/><path d="M3 15H21"/>`,
+    title: 'Press-On Artesanales',
+    description: 'Unas personalizadas listas para usar. Perfectas para ocasiones especiales.',
+    price: 'Desde $20.000',
+  },
+  {
+    icon: `<circle cx="12" cy="12" r="9"/><path d="M12 6V12L16 14"/>`,
+    title: 'Retiro Profesional',
+    description: 'Remocion segura de esmalte semipermanente o acrilico sin danar la una natural.',
+    price: 'Desde $8.000',
+  },
+  {
+    icon: `<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>`,
+    title: 'Spa de Manos',
+    description: 'Experiencia relajante con exfoliacion, mascarilla nutritiva y masaje revitalizante.',
+    price: 'Desde $22.000',
+  },
+];
+---
+
+<section class="py-24 md:py-40 bg-white" id="servicios">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-tag">Nuestros Servicios</p>
+      <h2 class="section-title">Experiencias Premium</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16">
+      {services.map((service, index) => (
+        <div class={`service-card p-16 bg-cream border border-transparent text-center transition-all duration-400 reveal ${index > 0 ? `reveal-delay-${(index % 3) + 1}` : ''}`}>
+          <div class="w-12 h-12 mx-auto mb-8 flex items-center justify-center border border-gold-light rounded-full text-gold">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" set:html={service.icon} />
+          </div>
+          <h3 class="font-serif text-xl md:text-2xl mb-4">{service.title}</h3>
+          <p class="text-sm leading-relaxed mb-8 text-color-text-light">{service.description}</p>
+          <p class="font-serif text-xl text-color-black">
+            {service.price} <span class="text-sm text-color-text-light">CLP</span>
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-card:hover {
+    @apply border-stone -translate-y-2;
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.08);
+  }
+</style>

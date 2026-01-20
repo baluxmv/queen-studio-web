@@ -1,0 +1,80 @@
+---
+interface Props {
+  instagramHandle?: string;
+}
+
+const { instagramHandle = 'queen.studioartnails' } = Astro.props;
+
+const galleryItems = [
+  'Nail Art',
+  'Diseno',
+  'Acrilico',
+  'Tendencia',
+  'Minimal',
+  '3D Art',
+  'French',
+  'Glitter',
+];
+---
+
+<section class="py-24 md:py-40 bg-beige" id="galeria">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-tag">Portfolio</p>
+      <h2 class="section-title">Nuestro Trabajo</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
+      {galleryItems.map((item, index) => (
+        <div class={`gallery-item aspect-square relative overflow-hidden cursor-pointer bg-stone reveal ${index > 0 ? `reveal-delay-${(index % 4) + 1}` : ''}`}>
+          <div class="gallery-placeholder w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-stone to-beige text-warm-gray">
+            <svg class="w-8 h-8 mb-2 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15L16 10L5 21"/>
+            </svg>
+            <span class="text-[0.7rem] tracking-wider uppercase">{item}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-16 reveal">
+      <a
+        href={`https://www.instagram.com/${instagramHandle}`}
+        class="gallery-link inline-flex items-center gap-2 text-[0.8rem] tracking-wider uppercase text-color-black no-underline pb-1 border-b border-gold transition-all duration-200 hover:text-gold hover:gap-4"
+        target="_blank"
+        rel="noopener"
+      >
+        Ver mas en Instagram
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery-item img {
+    @apply w-full h-full object-cover;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gallery-item:hover img {
+    @apply scale-105;
+  }
+
+  .gallery-item::after {
+    content: '';
+    @apply absolute inset-0 opacity-0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(28, 25, 23, 0.4));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gallery-item:hover::after {
+    @apply opacity-100;
+  }
+</style>

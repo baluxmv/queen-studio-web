@@ -1,0 +1,61 @@
+---
+interface Props {
+  whatsappNumber?: string;
+}
+
+const { whatsappNumber = '56961095518' } = Astro.props;
+---
+
+<section class="hero min-h-screen flex items-center justify-center relative bg-cream overflow-hidden" id="inicio">
+  <!-- Background -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 20% 50%, #b8860b 0%, transparent 50%), radial-gradient(circle at 80% 80%, #e8e6e1 0%, transparent 50%);"></div>
+
+  <div class="hero-content text-center py-24 px-8 max-w-[900px]">
+    <p class="hero-tag text-xs tracking-[0.3em] uppercase text-gold mb-8 inline-flex items-center gap-4 reveal">
+      <span class="w-10 h-px bg-gold-light"></span>
+      Providencia, Antofagasta
+      <span class="w-10 h-px bg-gold-light"></span>
+    </p>
+
+    <h1 class="hero-title mb-8 reveal reveal-delay-1">
+      El arte en tus<br><em class="italic text-gold">manos</em>
+    </h1>
+
+    <p class="hero-subtitle text-lg text-color-text-light max-w-[500px] mx-auto mb-16 leading-relaxed reveal reveal-delay-2">
+      Disenos exclusivos de nail art con tecnicas de vanguardia. Donde cada detalle cuenta.
+    </p>
+
+    <a
+      href={`https://wa.me/${whatsappNumber}`}
+      class="hero-cta inline-flex items-center gap-4 text-[0.8rem] tracking-[0.15em] uppercase text-white bg-color-black no-underline py-5 px-10 relative overflow-hidden reveal reveal-delay-3"
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="relative z-10">Agenda tu Cita</span>
+      <svg class="w-4 h-4 relative z-10 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+  </div>
+
+  <div class="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-color-text-light text-[0.7rem] tracking-[0.2em] uppercase">
+    <span>Scroll</span>
+    <div class="w-px h-16 bg-gradient-to-b from-gold to-transparent animate-scroll-line"></div>
+  </div>
+</section>
+
+<style>
+  .hero-cta::before {
+    content: '';
+    @apply absolute inset-0 bg-gold -translate-x-full transition-transform duration-400;
+  }
+
+  .hero-cta:hover::before {
+    @apply translate-x-0;
+  }
+
+  .hero-cta:hover svg {
+    @apply translate-x-1;
+  }
+</style>

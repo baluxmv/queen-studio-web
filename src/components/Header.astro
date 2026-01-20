@@ -1,0 +1,77 @@
+---
+interface Props {
+  whatsappNumber?: string;
+}
+
+const { whatsappNumber = '56961095518' } = Astro.props;
+---
+
+<header class="header fixed top-0 left-0 right-0 z-50 py-4 bg-cream/90 backdrop-blur-xl border-b border-transparent transition-all duration-400" id="header">
+  <div class="container">
+    <div class="flex items-center justify-between">
+      <a href="#" class="logo font-serif text-2xl font-normal text-color-black no-underline tracking-wide">
+        Queen Studio
+        <span class="block text-[0.6rem] tracking-[0.3em] uppercase text-color-text-light mt-0.5">Art Nails</span>
+      </a>
+
+      <nav class="nav hidden md:flex gap-8">
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#galeria" class="nav-link">Galeria</a>
+        <a href="#nosotros" class="nav-link">Nosotros</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+
+      <a
+        href={`https://wa.me/${whatsappNumber}`}
+        class="header-cta hidden md:inline-block text-xs tracking-wider uppercase text-color-black no-underline py-3 px-6 border border-color-black transition-all duration-200 hover:bg-color-black hover:text-white"
+        target="_blank"
+        rel="noopener"
+      >
+        Reservar
+      </a>
+
+      <button class="menu-btn flex md:hidden flex-col gap-[5px] bg-transparent border-none cursor-pointer p-2.5 -mr-2.5" aria-label="Menu">
+        <span class="w-6 h-px bg-color-black transition-all duration-200"></span>
+        <span class="w-6 h-px bg-color-black transition-all duration-200"></span>
+        <span class="w-6 h-px bg-color-black transition-all duration-200"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header.scrolled {
+    @apply border-b-stone;
+  }
+
+  .nav-link {
+    @apply text-[0.8rem] tracking-wider uppercase text-color-text no-underline relative py-2 transition-all duration-200;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-400;
+  }
+
+  .nav-link:hover {
+    @apply text-color-black;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+</style>
+
+<script>
+  const header = document.getElementById('header');
+
+  const handleHeaderScroll = () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  };
+
+  window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+</script>
