@@ -1,7 +1,8 @@
 # Dependencies
 node_modules/
 
-# Build cache
+# Build output (regenerable via npm run build)
+dist/
 .astro/
 
 # Vercel
